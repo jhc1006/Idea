@@ -1,0 +1,78 @@
+{
+  "harness": {
+    "name": "SilverCare & MCP Test Harness Engine",
+    "version": "1.0.0",
+    "target_workspace": "/Users/jeonhyochul/work/Idea",
+    "benchmarks": {
+      "max_latency_ms": 500,
+      "min_accuracy_percent": 95,
+      "max_memory_mb": 256
+    }
+  },
+  "test_scenarios": [
+    {
+      "id": "scenario-01",
+      "name": "🚨 SOS 비상 버튼 긴급 감지 시나리오",
+      "telemetry": {
+        "device": "emergencyButton",
+        "state": "triggered",
+        "motion": "active",
+        "pillbox": "done",
+        "aiCall": "answered"
+      },
+      "expected_risk": "critical",
+      "expected_dispatch": "pending"
+    },
+    {
+      "id": "scenario-02",
+      "name": "🚨 24시간 활동 미감지 시나리오",
+      "telemetry": {
+        "device": "motionSensor",
+        "state": "offline",
+        "motion": "offline",
+        "pillbox": "missed",
+        "aiCall": "unanswered"
+      },
+      "expected_risk": "critical",
+      "expected_dispatch": "pending"
+    },
+    {
+      "id": "scenario-03",
+      "name": "⚠️ AI 스피커 어지럼증/통증 키워드 시나리오",
+      "telemetry": {
+        "device": "aiCall",
+        "state": "warning_keyword",
+        "keyword": "어지러움",
+        "motion": "active",
+        "pillbox": "done"
+      },
+      "expected_risk": "warning",
+      "expected_dispatch": "pending"
+    },
+    {
+      "id": "scenario-04",
+      "name": "⚠️ 스마트 약통 점심약 2회 미복용 시나리오",
+      "telemetry": {
+        "device": "smartPillbox",
+        "state": "missed",
+        "motion": "active",
+        "aiCall": "answered"
+      },
+      "expected_risk": "warning",
+      "expected_dispatch": "pending"
+    },
+    {
+      "id": "scenario-05",
+      "name": "✅ 일상 활동 정상 복약 완료 시나리오",
+      "telemetry": {
+        "device": "motionSensor",
+        "state": "active",
+        "motion": "active",
+        "pillbox": "done",
+        "aiCall": "answered"
+      },
+      "expected_risk": "normal",
+      "expected_dispatch": "resolved"
+    }
+  ]
+}

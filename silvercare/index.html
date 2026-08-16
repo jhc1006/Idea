@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SilverCare AI | 노인 관제 모니터링 & 사회복지사 연계 플랫폼</title>
+  <meta name="description" content="독거 어르신 헬스케어, 실시간 텔레메트리 관제 및 사회복지사 비상 출동 연계 대시보드">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Effects -->
+  <div class="ambient-glow orb-cyan"></div>
+  <div class="ambient-glow orb-red"></div>
+
+  <!-- CONTROL ROOM HEADER -->
+  <header class="control-header">
+    <div class="header-container">
+      <div class="brand-box">
+        <div class="brand-logo">
+          <i class="fa-solid fa-heart-pulse"></i>
+        </div>
+        <div>
+          <h1 class="brand-title">SilverCare <span class="highlight">AI Control Center</span></h1>
+          <p class="brand-sub" id="center-name">서울시 마포구 독거노인 통합 관제 센터</p>
+        </div>
+      </div>
+
+      <div class="header-stats-bar">
+        <div class="stat-pill">
+          <span class="pill-label">관제 대상 어르신</span>
+          <span class="pill-value" id="stat-total-monitored">148명</span>
+        </div>
+        <div class="stat-pill red-border">
+          <span class="pill-label">🚨 긴급 대응 필요</span>
+          <span class="pill-value red-text" id="stat-critical-count">2건</span>
+        </div>
+        <div class="stat-pill">
+          <span class="pill-label">근무 사회복지사</span>
+          <span class="pill-value" id="stat-workers-count">12명</span>
+        </div>
+        <div class="stat-pill">
+          <span class="pill-label">금일 현장 출동</span>
+          <span class="pill-value" id="stat-today-dispatches">7건</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="live-clock" id="live-clock">14:07:01</div>
+        <button id="sim-trigger-btn" class="ctrl-btn sim-btn">
+          <i class="fa-solid fa-bolt"></i> AI 센서 모의 발생기
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- EMERGENCY ALERT BANNER -->
+  <div class="emergency-banner" id="emergency-banner">
+    <div class="banner-content">
+      <div class="alert-icon-pulse"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <div class="banner-text">
+        <strong id="banner-title">🚨 긴급 상황 발생: 박창식 어르신 (망원2동 45-12)</strong>
+        <span id="banner-desc">SOS 비상 버튼 작동 감지됨 — 담당 복지사(이지은) 긴급 출동 요망</span>
+      </div>
+      <button class="ctrl-btn urgent-btn" onclick="scrollToSenior('sn-102')">
+        <i class="fa-solid fa-truck-medical"></i> 출동 상태 확인
+      </button>
+    </div>
+  </div>
+
+  <main class="main-dashboard">
+    <div class="dashboard-grid">
+
+      <!-- LEFT: SENIORS MONITORING GRID -->
+      <section class="seniors-section">
+        <div class="section-toolbar">
+          <div class="toolbar-title">
+            <h2><i class="fa-solid fa-users-viewfinder"></i> 실시간 어르신 안전 현황</h2>
+            <span class="count-chip" id="visible-count">8명 표시 중</span>
+          </div>
+
+          <!-- Risk Filter Buttons -->
+          <div class="filter-group" id="risk-filters">
+            <button class="filter-chip active" data-risk="all">전체보기</button>
+            <button class="filter-chip chip-critical" data-risk="critical">🚨 긴급 (2)</button>
+            <button class="filter-chip chip-warning" data-risk="warning">⚠️ 경고 (2)</button>
+            <button class="filter-chip chip-caution" data-risk="caution">⚡ 주의 (2)</button>
+            <button class="filter-chip chip-normal" data-risk="normal">✅ 정상 (2)</button>
+          </div>
+        </div>
+
+        <!-- Senior Cards Container -->
+        <div class="cards-grid" id="seniors-cards-container">
+          <!-- Dynamic Senior Cards rendered via JS -->
+        </div>
+      </section>
+
+      <!-- RIGHT: LIVE EVENT LOG & WORKER DISPATCH STATUS -->
+      <aside class="sidebar-section">
+        
+        <!-- Live Telemetry Stream -->
+        <div class="sidebar-card glass-box">
+          <div class="card-head">
+            <h3><i class="fa-solid fa-satellite-dish"></i> 실시간 텔레메트리 스트림</h3>
+            <span class="live-dot"></span>
+          </div>
+          <div class="event-stream-list" id="event-stream-container">
+            <!-- Dynamic Telemetry Log Items -->
+          </div>
+        </div>
+
+        <!-- Welfare Workers Status Panel -->
+        <div class="sidebar-card glass-box">
+          <div class="card-head">
+            <h3><i class="fa-solid fa-user-nurse"></i> 근무 중인 사회복지사 (4명)</h3>
+          </div>
+          <div class="workers-list" id="workers-list-container">
+            <!-- Dynamic Workers List -->
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- DISPATCH & FIELD REPORT MODAL -->
+  <div class="modal-overlay" id="dispatch-modal">
+    <div class="modal-box glass-box">
+      <button class="modal-close-btn" id="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-header">
+        <h2 id="modal-title">🚨 사회복지사 긴급 출동 및 조치 서식</h2>
+        <p id="modal-senior-info" style="color:var(--text-muted);">어르신: 김순자 (82세) | 성산1동 124-5</p>
+      </div>
+
+      <form id="dispatch-form" class="modal-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>담당 사회복지사</label>
+            <select id="modal-worker-select" class="form-input">
+              <option value="worker-1">김민수 사회복지사 (성산1동 담당)</option>
+              <option value="worker-2">이지은 사회복지사 (망원2동 담당)</option>
+              <option value="worker-3">박준혁 사회복지사 (상암동 담당)</option>
+              <option value="worker-4">최수진 사회복지사 (연남동/합정동 담당)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>출동 조치 상태</label>
+            <select id="modal-status-select" class="form-input">
+              <option value="dispatched">🏃‍♂️ 현장 출동 중</option>
+              <option value="resolved">✅ 현장 도착 및 이상 조치 완료</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>현장 확인 및 조치 사항 메모</label>
+          <textarea id="modal-field-note" class="form-input form-textarea" rows="4" placeholder="어르신 건강 상태, 현장 방문 및 보호자 통화 조치 결과를 입력하세요." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="modal-notify-guardian" checked>
+            <span>📱 보호자(장녀/장남) 카카오톡 및 SMS 자동 조치 결과 알림 전송</span>
+          </label>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="ctrl-btn cancel-btn" id="modal-cancel-btn">취소</button>
+          <button type="submit" class="ctrl-btn primary-btn"><i class="fa-solid fa-paper-plane"></i> 조치 사항 등록 완료</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-area" id="toast-area"></div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>전효철 | AI & Full-Stack Software Engineer Portfolio</title>
+  <meta name="description" content="AI 멀티에이전트 시스템, LLM 응용 솔루션, 고성능 웹 애플리케이션 포트폴리오 랜딩 페이지">
+  <meta name="keywords" content="전효철, AI 엔지니어, 풀스택 개발자, MCP, Multi-Agent, Web Developer, Portfolio">
+  
+  <!-- Open Graph / Social Media Meta -->
+  <meta property="og:title" content="전효철 | AI & Full-Stack Software Engineer">
+  <meta property="og:description" content="AI 멀티에이전트 솔루션 & 차세대 풀스택 웹 포트폴리오">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Animated Background Glowing Orbs -->
+  <div class="ambient-background">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-brand">
+        <span class="brand-icon"><i class="fa-solid fa-code"></i></span>
+        <span class="brand-name">HYOCHUL<span class="brand-highlight">.DEV</span></span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#about" class="nav-link"><i class="fa-solid fa-user"></i> About</a>
+        <a href="#skills" class="nav-link"><i class="fa-solid fa-layer-group"></i> Skills</a>
+        <a href="#projects" class="nav-link"><i class="fa-solid fa-rocket"></i> Projects</a>
+        <a href="#ai-demo" class="nav-link"><i class="fa-solid fa-robot"></i> AI Playground</a>
+        <a href="#experience" class="nav-link"><i class="fa-solid fa-briefcase"></i> Experience</a>
+        <a href="#contact" class="nav-link"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="icon-btn" title="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="#contact" class="cta-btn primary-btn btn-sm">Let's Connect</a>
+        <button id="mobile-toggle" class="icon-btn mobile-only" title="Toggle Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="section-container hero-grid">
+        <div class="hero-content">
+          <div class="status-badge">
+            <span class="pulse-dot"></span>
+            <span id="status-text">Available for New Projects</span>
+          </div>
+
+          <h1 class="hero-title">
+            Crafting <span class="gradient-text">Intelligent AI Agents</span> & High-Performance Web Apps
+          </h1>
+
+          <p class="hero-subtitle" id="hero-tagline">
+            Empowering Next-Gen Applications with Autonomous Agents & High-Performance Systems
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="cta-btn primary-btn btn-lg">
+              <i class="fa-solid fa-compass"></i> Explore Projects
+            </a>
+            <a href="#ai-demo" class="cta-btn glass-btn btn-lg">
+              <i class="fa-solid fa-play"></i> Live AI Demo
+            </a>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="hero-stats" id="stats-grid">
+            <!-- Dynamic stats rendered via JS -->
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="avatar-card glass-panel">
+            <div class="avatar-wrapper">
+              <img id="profile-avatar" src="assets/avatar.svg" alt="전효철 Profile Avatar">
+              <div class="avatar-glow"></div>
+            </div>
+            <div class="avatar-info">
+              <h3 id="profile-name">전효철 (Hyochul Jeon)</h3>
+              <p id="profile-role" class="role-text"><i class="fa-solid fa-laptop-code"></i> AI & Full-Stack Software Engineer</p>
+              <div class="social-links" id="social-links-hero">
+                <a href="https://github.com" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:hyochul.dev@example.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section" id="about">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-terminal"></i> ABOUT ME</span>
+          <h2 class="section-title">Innovating at the Intersection of AI & Web</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card glass-panel">
+            <div class="card-icon"><i class="fa-solid fa-quote-left"></i></div>
+            <h3 class="card-title">Bio & Vision</h3>
+            <p id="profile-bio" class="about-text">
+              AI 멀티에이전트 시스템, LLM 응용 솔루션, 그리고 몰입감 넘치는 고성능 웹 애플리케이션을 설계하고 구축하는 풀스택 엔지니어입니다.
+            </p>
+            <div class="info-badges">
+              <span class="info-chip"><i class="fa-solid fa-location-dot"></i> Seoul, South Korea</span>
+              <span class="info-chip"><i class="fa-solid fa-bolt"></i> Agentic Workflow Architect</span>
+            </div>
+          </div>
+
+          <div class="about-features glass-panel">
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fa-solid fa-microchip"></i></div>
+              <div>
+                <h4>Model Context Protocol (MCP)</h4>
+                <p>표준화된 LLM 도구 연동 인터페이스 및 툴킷 개발</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fa-solid fa-network-wired"></i></div>
+              <div>
+                <h4>Multi-Agent Orchestration</h4>
+                <p>역할 분담과 자율 통신 기반의 비동기 분산 과업 수행</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <div>
+                <h4>State-of-the-Art UX/UI</h4>
+                <p>Glassmorphism, 반응형 그리드 및 풍부한 마이크로 애니메이션</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="skills-section" id="skills">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-sliders"></i> TECH STACK</span>
+          <h2 class="section-title">Technical Expertise & Capabilities</h2>
+        </div>
+
+        <div class="skills-container" id="skills-matrix">
+          <!-- Dynamic Skills Grid rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="projects-section" id="projects">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-folder-open"></i> PORTFOLIO</span>
+          <h2 class="section-title">Featured Projects & Innovations</h2>
+        </div>
+
+        <!-- Project Filter Buttons -->
+        <div class="filter-bar" id="project-filters">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="ai">AI & MCP</button>
+          <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+          <button class="filter-btn" data-filter="design">UI/UX Design</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-grid">
+          <!-- Dynamic Project Cards rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE AI PLAYGROUND DEMO -->
+    <section class="ai-demo-section" id="ai-demo">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-wand-magic"></i> INTERACTIVE DEMO</span>
+          <h2 class="section-title">Live AI Agent Simulator</h2>
+          <p class="section-subtitle">클릭하여 실제 에이전트 시스템이 과업을 분산 처리하고 MCP 도구를 실행하는 과정을 체험해 보세요.</p>
+        </div>
+
+        <div class="ai-demo-card glass-panel">
+          <div class="demo-controls">
+            <label class="control-label">시나리오 선택:</label>
+            <div class="scenario-buttons" id="scenario-selector">
+              <!-- Dynamic buttons rendered via JS -->
+            </div>
+          </div>
+
+          <div class="demo-prompt-box">
+            <div class="prompt-header">
+              <span><i class="fa-solid fa-terminal"></i> Agent Task Input</span>
+              <button id="run-demo-btn" class="cta-btn primary-btn btn-sm">
+                <i class="fa-solid fa-play"></i> Run Simulation
+              </button>
+            </div>
+            <textarea id="demo-prompt-text" class="demo-textarea" readonly></textarea>
+          </div>
+
+          <div class="demo-execution-terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="terminal-title">Agentic Workflow Terminal Output</span>
+            </div>
+            <div class="terminal-body" id="terminal-output">
+              <div class="terminal-line placeholder">Press 'Run Simulation' to start agent workflow...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="experience-section" id="experience">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-timeline"></i> CAREER</span>
+          <h2 class="section-title">Professional Experience Timeline</h2>
+        </div>
+
+        <div class="timeline" id="experience-timeline">
+          <!-- Dynamic timeline items rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-paper-plane"></i> CONTACT</span>
+          <h2 class="section-title">Let's Build Something Extraordinary</h2>
+          <p class="section-subtitle">새로운 프로젝트 문의, 협업 제안, 기술 문의 언제든 환영합니다.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info-card glass-panel">
+            <h3>Get In Touch</h3>
+            <p>메시지를 남겨주시면 신속하게 답변해 드립니다.</p>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="item-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div>
+                  <span class="item-label">Email</span>
+                  <a href="mailto:hyochul.dev@example.com" id="contact-email">hyochul.dev@example.com</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="item-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div>
+                  <span class="item-label">Location</span>
+                  <span>Seoul, South Korea</span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="item-icon"><i class="fa-solid fa-user-check"></i></div>
+                <div>
+                  <span class="item-label">Availability</span>
+                  <span>Open for Projects & Consulting</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form glass-panel" id="contact-form">
+            <div class="form-group">
+              <label for="form-name">Your Name</label>
+              <input type="text" id="form-name" placeholder="홍길동" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-email">Your Email</label>
+              <input type="email" id="form-email" placeholder="example@domain.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-message">Message</label>
+              <textarea id="form-message" rows="4" placeholder="프로젝트 제안이나 문의 내용을 적어주세요." required></textarea>
+            </div>
+
+            <button type="submit" class="cta-btn primary-btn btn-full">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span>HYOCHUL<span class="brand-highlight">.DEV</span></span>
+        <p>© 2026 Hyochul Jeon. All Rights Reserved.</p>
+      </div>
+      <div class="footer-back-top">
+        <a href="#hero" class="icon-btn" title="Back to Top"><i class="fa-solid fa-arrow-up"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PROJECT DETAIL MODAL -->
+  <div class="modal-backdrop" id="project-modal">
+    <div class="modal-content glass-panel">
+      <button class="modal-close" id="modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body" id="modal-body-content">
+        <!-- Dynamic Modal Content rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
